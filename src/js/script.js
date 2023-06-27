@@ -168,7 +168,23 @@ const select = {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
+
+          // check if formData includes option the same as param key and 
+         // const paramExists = formData.hasOwnProperty(paramId);
+         // console.log('param exists: ', paramExists);
+
+          // check if this array includes marked option
+         // console.log(formData[paramId].includes(optionId));
+
+          if (formData[paramId] && formData[paramId].includes(optionId)) {
+            if (!option.default) { // check if this option is marked and not default
+              price = price + option['price'];
+            } 
+          } else if (option.default) { // check if this option is NOT marked and default
+            price = price - option['price'];
+          }
         }
+        
       }
 
       // update calculated price in the HTML
