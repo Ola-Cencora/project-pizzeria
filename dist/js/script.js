@@ -93,6 +93,7 @@ const select = {
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -169,24 +170,29 @@ const select = {
           const option = param.options[optionId];
           console.log(optionId, option);
 
-          // check if formData includes option the same as param key and 
-         // const paramExists = formData.hasOwnProperty(paramId);
-         // console.log('param exists: ', paramExists);
+          // create const checking if an option is selected
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
-          // check if this array includes marked option
-         // console.log(formData[paramId].includes(optionId));
-
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
-            if (!option.default) { // check if this option is marked and not default
-              price = price + option['price'];
+          // change product price depening on selected options
+          if (optionSelected) {
+            if (!option.default) { // check if this option is selected and NOT default
+              price = price + option.price;
             } 
-          } else if (option.default) { // check if this option is NOT marked and default
-            price = price - option['price'];
+          } else if (option.default) { // check if this option is NOT selected and default
+            price = price - option.price;
           }
-        }
-        
-      }
 
+          // change product image depending on selected options
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId ); // find image with class .paramId-optionId
+          if (optionImage){ // check if this image exists
+            if (optionSelected) { // is this option selected?
+              optionImage.classList.add(classNames.menuProduct.imageVisible); // if yes, add to its image class active
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible); // if not, remove class active
+            }
+          }
+        }        
+      }
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
