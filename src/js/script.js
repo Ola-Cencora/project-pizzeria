@@ -235,6 +235,8 @@ const select = {
       const thisWidget = this;
 
       const newValue = parseInt(value);
+      
+      thisWidget.value = settings.amountWidget.defaultValue;
 
       /* TODO: Add validation */
       if (newValue !== thisWidget.value && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
