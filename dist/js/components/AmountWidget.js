@@ -6,9 +6,9 @@ class AmountWidget extends BaseWidget{
       super(element, settings.amountWidget.defaultValue); // BaseWidget constructor
 
       const thisWidget = this;
-      
       thisWidget.getElements(element);
       thisWidget.initActions();
+      thisWidget.renderValue();
 
       //console.log('AmountWidget: ', thisWidget);
       //console.log('constructor arguments: ', element);
@@ -32,7 +32,7 @@ class AmountWidget extends BaseWidget{
       const thisWidget = this;
 
       thisWidget.dom.input.value = thisWidget.value;
-    }
+    } 
 
     initActions(){
       const thisWidget = this;
