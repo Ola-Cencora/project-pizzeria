@@ -1,10 +1,12 @@
 export const select = {
     templateOf: {
+      home: '#template-home',
       menuProduct: "#template-menu-product",
       cartProduct: '#template-cart-product',
       bookingWidget: '#template-booking-widget',
       },
       containerOf: {
+        home: '.home-wrapper',
         menu: '#product-list',
         cart: '#cart',
         pages: '#pages',
@@ -14,6 +16,9 @@ export const select = {
         menuProducts: '#product-list > .product',
         menuProductsActive: '#product-list > .product.active',
         formInputs: 'input, select',
+      },
+      home: {
+        carousel: '.main-carousel',
       },
       menuProduct: {
         clickable: '.product__header',
@@ -51,7 +56,7 @@ export const select = {
           bookingOptions: '.booking-options',
       },
       nav: {
-          links: '.main-nav a',
+          links: '.main-nav a, .row a'
       },
       cart: {
         productList: '.cart__order-summary',
@@ -131,6 +136,7 @@ export const settings = {
 };
   
 export const templates = {
+      home: Handlebars.compile(document.querySelector(select.templateOf.home).innerHTML),
       menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
       cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
       bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
