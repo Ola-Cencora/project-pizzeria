@@ -1,54 +1,57 @@
-.home {
-
-    img{
-        border-radius: 5px;
-    }
-
     /* INFO ROW */
 
     .row {
         display: flex;
         flex-wrap: wrap;
         margin-top: 60px;
-
-        .box1 {
-            padding-right: 3px;
-        }
-
-        .box2 {
-            padding-left: 3px;
-        }
+        gap: $base-size/2;
 
         .box1, .box2 {
-            flex: 0 0 50%;
+            flex: 0 0 49.3%;
             position: relative;
             height: 150px;
+            &:hover .box-title {
+                display: none;
+                transition: $transition;
+            }
+            &:hover .layer {
+                display: flex;
+                transition: $transition;
+            }
 
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border-radius: $radius;
             }
 
-            h2 {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
+            .box-title {
+                @include center;
                 color: $color-light;
                 margin: 0;
             }
 
             .layer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0%;
+                top: 0%;
+                color: $color-light;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 display: none;
-                //position: absolute;
-                //width: 100%;
-                //height: 100%;
-                //left: 0%;
-                //top: 0%;
-                //color: $color-light;
-                //text-align: center;
-                //display: flex;
+
+                h2, p {
+                    margin: $base-size/3;
+                }
+
+                p {
+                    font-family: $font-text;
+                }
             }
 
         }
@@ -61,8 +64,7 @@
             justify-content: center;
             flex-direction: column;
             height: 150px;
-            border-radius: 5px;
-            margin-top: 6px;
+            border-radius: $radius;
 
             h2, p {
                 color: $color-light;
@@ -90,21 +92,22 @@
             .carousel-image {
                 height: 220px;
                 width: 220px;
+                border-radius: $radius;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    padding: 3px;
-                    border-radius: 8px;
+                    padding: $base-size/4;
+                    border-radius: $radius;
                 }
             }
 
             .carousel-description {
                 flex: 0 0 60%;
-
                 p {
                     margin: 0;
+                    font-family: $font-text;
                 }
 
                 p:first-of-type {
@@ -127,17 +130,43 @@
         display: flex;
         flex-wrap: wrap;
         margin-top: 80px;
+        gap: $base-size/2;
 
         .gallery-img {
-            width: 33.33%;
-            height: 219.97px;
+            width: 32%;
+            height: 211.19px;
+            position: relative;
+            &:hover .overlay {
+                transition: $transition;
+                display: block;
+            }
+
+            .overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                border-radius: $radius;
+                background-color: rgba(43, 38, 38, 0.8);
+                display: none;
+                
+                i {
+                    padding: $base-size/2;
+                    font-size: $base-size*2;
+                    color: $color-light;
+                    margin-top: 40%;
+                    &:hover {
+                        color: $color-main;
+                        transition: $transition;
+                    }
+                }
+            }
 
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                border-radius: 8px;
-                padding: 3px;
+                border-radius: $radius;
             }
     
         }
@@ -145,10 +174,10 @@
     }
 
     .link {
-        margin-top: 20px;
-        margin-bottom: 60px;
-        padding-left: 3px;
-        
+        margin-top: $base-size*2;
+        margin-bottom: $base-size*5;
+        padding-left: $base-size/4;
+
         a {
             &:hover {
                 color: $color-main;
@@ -156,4 +185,3 @@
         }
     }
 
-}
