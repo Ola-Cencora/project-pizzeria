@@ -24,14 +24,16 @@ class Home{
 
     initWidgets(){
         const thisHome = this;
-        // eslint-disable-next-line no-undef
-        const flkty = new Flickity(thisHome.dom.carousel, {
-            cellAlign: 'left',
-            contain: true,
-            wrapAround: true,
-            autoPlay: true,
-        });
-        console.log(flkty);
+        setTimeout(function() {
+            // eslint-disable-next-line no-undef
+            const flkty = new Flickity(thisHome.dom.carousel, {
+                cellAlign: 'left',
+                contain: true,
+                wrapAround: true,
+                autoPlay: true,
+            });
+            console.log(flkty);
+        }, 50);
     }
 }
 export default Home;
